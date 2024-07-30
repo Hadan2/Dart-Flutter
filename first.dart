@@ -57,7 +57,39 @@ void main() {
      -> import 구문을 사용하여 가져온다.
 
 
-2. Dart 의 기본 문법 두번째.
+2. Dart 의 기본 문법 두번째
+    - Class
+      -> Dart 에서 Class 는 기본적으로 C++ 과 유사하나, named constructor 라는
+         다른 방법의 constructor 를 제공한다. 
+         Spacecraft.unlaunched(String name) : this(name, null);
+         클래스 이름.constructor로 사용할 함수(입력 파라메타) 형태이며, 
+         받은 입력 파라메터를 가지고 멤버 변수인 name 을 채우고, 또다른 멤버 변수를 
+         null 로 채운다는 뜻이다.
 
-    -
+      -> print 구문의 문자열 안에 $ 기호를 주면, 해당 기호 뒤의 변수 이름 출력
+         print('Spacecraft: $name');
+
+      -> int get launchYear => 
+            launchDate?.year;   // 변수 뒤의 ? 은 nullable 이란 뜻
+
+          ...
+          print(voyager.launchYear);
+          함수를 의미하는 () 기호는 없지만 객체 내부의 값을 꺼내올 수 있음.
+          launchDate?.year 의 의미는, launchDate 가 null 이 아닌 경우, launchDate
+          의 멤버인 year 값을 추출한다.
+      
+      -> Dart 의 유전 법칙은 single inheritance 이며, 다수의 base class 부터 
+         derived class 를 만들 수 있는 C++ 과는 차이가 있다. 
+         Dart 에서 inheritance 는 'extends' 문법으로 사용한다.
+
+
+    - Async 
+      -> Dart 에서는 async 와 await 문법을 제공하는데, 
+      Future printWithDelay(String message) async {
+        await Future.delayed(oneSecond);
+        print(message);
+      }
+      위의 프로그램 안에서는 delayed 함수가 실행되는 동한 다른 작업들이 동시에
+      이루어질 수 있다. 이후 delayed 함수의 작업이 종료되면 print(message)를 
+      실행한다.
  */
