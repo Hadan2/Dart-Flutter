@@ -1,7 +1,31 @@
+import 'dart:io';
+
 void main() {
-  var i = 1;
-  i = 3;
-  print(i);
+  // #1 write method in stdout class
+  // Reference: https://api.flutter.dev/flutter/dart-io/Stdout/write.html
+  stdout.write("A");
+  stdout.write("B");
+  stdout.write("\n");
+
+  // #2 writeln method in stdout class
+  // Reference: https://api.flutter.dev/flutter/dart-io/Stdout/writeln.html
+  stdout.writeln("A");
+  stdout.writeln("B");
+  stdout.write("\n");
+
+  // #3 writeln method in stdout class
+  // Reference: https://api.flutter.dev/flutter/dart-io/Stdout/writeAll.html
+  List myList = ["A", "B"];
+  stdout.writeAll(myList, ":");
+  stdout.write("\n");
+
+  // #4 readLineSync method in stdin class
+  // Reference: https://api.flutter.dev/flutter/dart-io/Stdin/readLineSync.html
+  for (String myInput = ""; myInput != "exit";) {
+    stdout.write('type\$ ');
+    myInput = stdin.readLineSync()!;
+    stdout.writeln('----> $myInput');
+  }
 }
 
 /*
@@ -92,4 +116,15 @@ void main() {
       위의 프로그램 안에서는 delayed 함수가 실행되는 동한 다른 작업들이 동시에
       이루어질 수 있다. 이후 delayed 함수의 작업이 종료되면 print(message)를 
       실행한다.
+
+  3. Dart 에서의 Console I/O
+      -> import 'dart:io'; Dart 언어가 기본적으로 제공하는 라이브러리를 사용
+         1. stdout.write(i) -> 하나의 입력 파라미터를 받아 화면에 출력
+         2. stdout.writeln(i) -> 줄바꿈까지 추가(\n)
+         3. stdout(writeAll(i[s])) -> 복수의 값을 갖는 입력 파라미터를 받아 
+            하나하나씩 출력
+          
+         1. stdin.readLineSync() -> 사용자가 엔터키를 입력하기 전까지의 내용을 문자열로 리턴
+
+
  */
